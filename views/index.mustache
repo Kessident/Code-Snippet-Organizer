@@ -1,1 +1,25 @@
 <p>This is the Index Page!</p>
+{{#errors}}
+<h1>{{.}}</h1>
+{{/errors}}
+
+<form class="snippetForm" action="/snippets" method="post">
+  <input type="text" name="title" placeholder="title"><br>
+  <textarea name="body" rows="8" cols="80">Snippet Body</textarea><br>
+  <input type="text" name="notes" placeholder="notes"><br>
+  <input type="text" name="language" placeholder="language"><br>
+  <button type="submit" name="button">Submit</button>
+</form>
+
+<table class="snippetTable">
+  <tr>
+    <td>Title</td>
+    <td>Body</td>
+    <td>Notes</td>
+    <td>Language</td>
+    <td>Tags</td>
+  </tr>
+</table>
+
+<a href="/logout">Log Out</a>
+<script type="text/javascript" src="/js/index.js"></script>

@@ -1,0 +1,13 @@
+{{#errors}}
+<h1>{{.}}</h1>
+{{/errors}}
+
+<form action="/signup" method="post">
+  <input type="text" name="username" placeholder="username"><br>
+  <input type="password" name="password" placeholder="Password"><br>
+  <input type="password" name="password_confirm" placeholder="Password Confirmation"><br>
+  <button type="submit" name="button">Sign Up</button>
+</form>
+
+<br><br>
+<a href="/signin">Sign In</a>

@@ -5,6 +5,7 @@ const mustacheExpress = require("mustache-express");
 const path            = require("path");
 const session         = require("express-session");
 const routes          = require("./routes/index.js");
+const morgan          = require("morgan");
 
 // Initialze Express App
 const app = express();
@@ -28,15 +29,28 @@ app.use(validator());
 
 // Initialize Express Session
 app.use(session({
-  secret: 'thesecret',
+  secret: '9238y95quh243tiuhatnm, ^%^( )',
   resave: false,
   saveUninitialized: false
 }));
+
+//Logger
+app.use(function (req,res,next) {
+  console.log();
+  console.log("req.session.submitErrors = ", req.session.submitErrors);
+  console.log("req.session.username = ", req.session.username);
+  next();
+});
+app.use(morgan("dev"));
 
 // Routes
 app.use(routes);
 
 // Open Port
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
+if(require.main === module){
+  app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+  });
+}
+
+module.exports = app;
